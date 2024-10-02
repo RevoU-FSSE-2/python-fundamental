@@ -4,5 +4,9 @@ database = {
             "password": "admin",
             "fullname": "Administrator",
         },
+        "iwant": {
+            "password": "iwant",
+            "fullname": "I Want",
+        },
     }
 }

@@ -9,6 +9,11 @@ readme = "README.md"
 python = "^3.11"
 flask = "^3.0.3"
 flasgger = "^0.9.7.1"
+python-dotenv = "^1.0.1"
+flask-migrate = "^4.0.7"
+flask-sqlalchemy = "^3.1.1"
+psycopg2-binary = "^2.9.9"
+sqlalchemy-serializer = "^1.4.22"
 
 
 [build-system]

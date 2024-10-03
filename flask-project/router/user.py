@@ -1,16 +1,15 @@
 from flask import Blueprint, jsonify, request
-
+from config import settings
 from db import database
 
 user_route = Blueprint("user", __name__, url_prefix="/user")
 
 
 def get_user(keyname):
-    userdb = database.get("user")
-    user = userdb.get(keyname)
+    user:settings.User = settings.User.query.filter_by(first_name=keyname).first()
     if user is None:
         return jsonify({"message": "User not found"}), 404
-    return jsonify(user), 200
+    return jsonify(user.to_dict(rules=('-password',))), 200
 
 
 @user_route.route("", methods=["POST", "GET"])
@@ -37,19 +36,18 @@ def user(keyname=None):
 
     if request.method == "POST":
         data = request.json
-        username = data.get("username")
+        first_name = data.get("first_name")
+        last_name = data.get("last_name")
         password = data.get("password")
-        fullname = data.get("fullname")
-        userdb = database.get("user")
-        if userdb.get(username) is not None:
-            return jsonify({"message": "User already exists"}), 400
-        userdb[username] = {
-            "password": password,
-            "fullname": fullname,
-        }
-        return jsonify(userdb[username]), 201
+        user = settings.User(first_name=first_name, last_name=last_name, password=password)
+        settings.db.session.add(user)
+        settings.db.session.commit()
+        return jsonify({"id": user.id}), 201
     elif request.method == "GET":
-        userdb = database.get("user")
+        users: list[settings.User] = settings.User.query.all()
+        response = []
+        for user in users:
+            response.append(user.to_dict(rules=('-password',)))
         if keyname is None:
-            return jsonify(userdb), 200
+            return jsonify(response), 200
         return get_user(keyname)

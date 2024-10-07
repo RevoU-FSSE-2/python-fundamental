@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify, request
 from config import settings
-from db import database
 
 user_route = Blueprint("user", __name__, url_prefix="/user")
 

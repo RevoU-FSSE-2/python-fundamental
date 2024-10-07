@@ -16,6 +16,9 @@ psycopg2-binary = "^2.9.9"
 sqlalchemy-serializer = "^1.4.22"
 
 
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.3"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

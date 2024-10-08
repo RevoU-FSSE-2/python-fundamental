@@ -1,4 +1,4 @@
-def test_get_profile(client):
+def test_get_profile(client, generate_fake_user):
     response = client.get("/profile")
     assert response.status_code == 200
     assert response.json == [

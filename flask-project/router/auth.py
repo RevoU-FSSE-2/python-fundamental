@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from config import settings
+from models.user import User
 
 auth_router = Blueprint("auth", __name__, url_prefix="/login")
 
@@ -16,7 +16,7 @@ def login():
     #         "password": "admin",
     #         "fullname": "Administrator",
     # }
-    user: settings.User = settings.User.query.filter_by(first_name=username).first()
+    user: User = User.query.filter_by(first_name=username).first()
     # if not found is None
     # {
     #         "password": "admin",

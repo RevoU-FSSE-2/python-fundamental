@@ -16,6 +16,5 @@ jobs:
         with:
           poetry-version: 1.7.1
       - name: install dependencies
-        with:
-          path: flask-project
+        working-directory: flask-project
         run: poetry install

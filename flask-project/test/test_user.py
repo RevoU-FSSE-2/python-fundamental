@@ -21,7 +21,7 @@ def test_success_create_user(client, appjson, test_db):
     user_id = response.json["id"]
     
     # data layer
-    user: User = User.query.get(user_id)
+    user: User = test_db.session.query(User).get(user_id)
     assert user.id == user_id
     assert user.first_name == payload["first_name"]
     assert user.last_name == payload["last_name"]

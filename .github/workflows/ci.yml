@@ -4,6 +4,15 @@ on: pull_request
 jobs:
   ci:
     runs-on: ubuntu-22.04
+    services:
+      postgres:
+        image: postgres:13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: testuser
+          POSTGRES_PASSWORD: testpassword
+          POSTGRES_DB: testdb
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
@@ -16,3 +25,8 @@ jobs:
       - name: install dependencies
         working-directory: flask-project
         run: poetry install
+      - name: Run tests
+        working-directory: flask-project
+        env:
+          TEST_POSTGRES_CONNECTION_STRING_TEST: postgres://testuser:testpassword@localhost:5432/testdb
+        run: poetry run pytest

@@ -6,8 +6,6 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-        with:
-          path: flask-project
       - uses: actions/setup-python@v4
         with:
           python-version: 3.11

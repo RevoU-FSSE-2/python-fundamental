@@ -15,5 +15,7 @@ jobs:
         uses: abatilo/actions-poetry@v2
         with:
           poetry-version: 1.7.1
-      - name: View poetry --help
+      - name: install dependencies
+        with:
+          path: flask-project
         run: poetry install

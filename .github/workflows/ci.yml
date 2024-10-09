@@ -28,5 +28,5 @@ jobs:
       - name: Run tests
         working-directory: flask-project
         env:
-          TEST_POSTGRES_CONNECTION_STRING_TEST: postgres://testuser:testpassword@localhost:5432/testdb
+          TEST_POSTGRES_CONNECTION_STRING_TEST: postgresql://testuser:testpassword@localhost:5432/testdb
         run: poetry run pytest

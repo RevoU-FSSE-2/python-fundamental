@@ -22,7 +22,8 @@ def create_app(settings_conf=None):
     from router.auth import auth_router
     from router.user import user_route
     from router.profile import profile_route
-
+    from router.home import home_route
+    app.register_blueprint(home_route)
     app.register_blueprint(auth_router)
     app.register_blueprint(user_route)
     app.register_blueprint(profile_route)

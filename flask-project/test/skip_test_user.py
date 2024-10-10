@@ -1,5 +1,8 @@
 from models.user import User
 
+def test_index(client):
+    response = client.get("/")
+    assert response.status_code == 200
 
 def test_get_user(client, appjson, generate_fake_user):
     response = client.get("/user", headers=appjson)

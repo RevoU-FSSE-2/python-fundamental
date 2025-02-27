@@ -18,6 +18,16 @@ kangaroo = {
     "weight": 70.5,
     "food": ["grass", "leaf", "bark"],
 }
+# try:
+#     nama = kangaroo["nama"]
+# except KeyError as e:
+#     nama = None
+# print(nama)
+nama = kangaroo.get("nama", "unknown")
+print(nama)
+height = kangaroo.pop("height")
+print(height)
+print(kangaroo)
 # iterable is list, tuple, set, dictionary, string
 
 # print(person["name"])
@@ -26,15 +36,15 @@ kangaroo = {
 # print(person.get("nama")) # None
 # print(person.get("nama", "unkown")) # safe access with default value
 variable_yang_akan_digunakan_nanti = list(kangaroo.values())
-for key in kangaroo:
-    print(key)
+# for key in kangaroo:
+#     print(key)
 
-for value in kangaroo.values():
-    print(value, "<<", type(value))
+# for value in kangaroo.values():
+#     print(value, "<<", type(value))
 
-for key, value in kangaroo.items():
-    print(key, ":", value)
-try:
-    kangaroo["amount"] = 190.5
-except KeyError as e:
-    print(e)
+# for key, value in kangaroo.items():
+#     print(key, ":", value)
+# try:
+#     kangaroo["amount"] = 190.5
+# except KeyError as e:
+#     print(e)

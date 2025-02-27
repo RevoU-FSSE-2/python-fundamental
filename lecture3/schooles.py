@@ -8,9 +8,9 @@ class Student:
         print(
             f"Hello, my name is {self.name}, I am {self.age} years old, and my score is {self.score}"
         )
-    
+
     @classmethod
-    def make_premium_student(cls, name:str, age:int):
+    def make_premium_student(cls, name: str, age: int):
         return cls(name, age, 100)
 
     @classmethod
@@ -26,7 +26,6 @@ class Student:
     @classmethod
     def make_random_student(cls, jumlah: int):
         import random
-
         students = []
         for _ in range(jumlah):
             students.append(
@@ -66,7 +65,10 @@ class School:
         jumlah_siswa = len(self.students)
         return total_score / jumlah_siswa
 
+
 stephen = Student.make_premium_student("stephen", 20)
+
+
 # eko = Student("eko", 20, 90)
 # susi = Student("susi", 20, 60)
 # joko = Student("joko", 20, 70)
